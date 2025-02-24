@@ -16,79 +16,36 @@
 # ===================
 
 print("====WELKOM====")
-# verlaat = False
 items = []
 pryse = []
-
-"""
-while not verlaat:
-
-    try: # Toets vir ValueError
-        hoeveel = int(input("Hoeveel items het die kliënt? "))
-        for x in range(hoeveel):
-            # items.append(input("Item naam: "))
-            item = input("Item: ")
-            if item == "" or item == " ":
-                print("FOUT! Verskaf asseblief \'n naam vir die item.")
-                break
-            else:
-                items.append(item)
-
-            pryse.append(float(input(f"Prys van '{items[x]}': "))) # Toets vir ValueError
-            x += 1
-    except ValueError:
-        print("FOUT! Probeer asseblief weer.")
-    else:
-
-        x = 0
-
-        for x in range(hoeveel):
-            print(f"{items[x]}   R{pryse[x]}")
-        print("---------------")
-        print(f"Totaal R{sum(pryse)}")
-        print("# ===================")
-"""
 
 print("Gebruik enige tyd 'klaar' or 'verlaat' om die program te verlaat.")
 
 x = 0
 for x in range(999): # Die loop gaan vir 'n baie lang tyd aangaan, of todat die gebruiker besluit om die loop te verlaat.
     item = input("Item: ")
-    """
-    if item == "" or item == " ":
-        raise ValueError("FOUT! Die item moet \'n naam hê.")
-    """
-    if item == "klaar" or item == "Klaar" or item == "verlaat" or item == "Verlaat":
+    if item == "klaar" or item == "Klaar" or item == "verlaat" or item == "Verlaat": # Om die loop te exit.
         print("Bereken totale prys...")
         break
+    elif item == "" or item == " ": # Basiese fouthanteering.
+        print("FOUT! Die item moet \'n naam hê.")
     else:
         items.append(item)
-        pryse.append(float(input(f"Prys van '{item}': ")))
+
+        # Nog 'n bietjie fouthanteering:
+        f = False
+        while not f:
+            try:
+                prys = float(input(f"Prys van '{item}': "))
+            except ValueError:
+                print("FOUT! Die item moet \'n geldige prys hê.")
+            else:
+                pryse.append(prys)
+                break
         x += 1
-        """
-        nog = input("Is daar nog \'n item? (ja/nee): ")
-        if nog == "ja" or nog == "Ja" or nog == "y":
-            x += 1
-            # continue
-        else:
-            break
-        """
 
-"""
-print()
-x = ""
-try:
-    for x in items:
-        pryse.append(float(input(f"Prys van '{x}': ")))
-
-
-except ValueError:
-    print("FOUT! Die item moet \'n prys hê.")
-"""
-
-print()
-
-x = 0
+print() #
+x = 0 # Wis die waarde van x uit om weer die veranderlike te gebruik.
 for x in range(len(items)):
     print(f"{items[x]}      R{pryse[x]}")
 
